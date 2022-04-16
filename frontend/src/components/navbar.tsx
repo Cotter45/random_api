@@ -40,7 +40,10 @@ function NavBar() {
           <button 
             type='button' 
             className='link fade_in'
-            onClick={() => navigate('/parks')}
+            onClick={() => {
+              navigate('/parks');
+              setIsOpen(false);
+            }}
           >
             Parks API
           </button>
