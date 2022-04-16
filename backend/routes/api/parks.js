@@ -9,6 +9,21 @@ const cache = new nodeCache(3600);
 
 const router = express.Router();
 
+
+router.get('/oops', asyncHandler( async (req, res, next) => {
+
+  const pictures = await ParkPicture.findAll();
+
+  const mapped = pictures.map(picture => {
+    return {
+      park_id: picture.park_id,
+      location: picture.location
+    }
+  })
+
+  console.log(mapped);
+  return res.json(mapped)
+}))
 // route to get individual park
 router.get('/:id', asyncHandler(async (req, res, next) => {
   const { id } = req.params;
