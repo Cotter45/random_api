@@ -1,1 +1,2 @@
 {"timeStamp": "2022-04-16T04:43:56.075Z" , "level": "info", "message": "GET /api/parks/oops 200 18381 - 81.210 ms"},
+{"timeStamp": "2022-04-16T04:49:04.449Z" , "level": "info", "message": "GET /api/parks/oops 200 41391 - 40.307 ms"},

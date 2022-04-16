@@ -17,7 +17,9 @@ router.get('/oops', asyncHandler( async (req, res, next) => {
   const mapped = pictures.map(picture => {
     return {
       park_id: picture.park_id,
-      location: picture.location
+      location: picture.location,
+      createdAt: picture.createdAt,
+      updatedAt: picture.updatedAt
     }
   })
 
