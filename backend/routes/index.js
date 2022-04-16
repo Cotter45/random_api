@@ -3,11 +3,6 @@ const asyncHandler = require("express-async-handler");
 const router = express.Router();
 const apiRouter = require("./api");
 
-// test route
-router.get('/', asyncHandler(async (req, res, next) => {
-  return res.json({ message: "Hello World!" });
-}));
-
 router.use("/api", apiRouter);
 
 // Static routes
