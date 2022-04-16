@@ -16,11 +16,11 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cotter45/WorkDay-.git"
+    "url": "git+https://github.com/Cotter45/random_api-.git"
   },
   "bugs": {
-    "url": "https://github.com/Cotter45/WorkDay-/issues"
+    "url": "https://github.com/Cotter45/random_api-/issues"
   },
-  "homepage": "https://github.com/Cotter45/WorkDay-#readme",
+  "homepage": "https://github.com/Cotter45/random_api-#readme",
   "description": ""
 }

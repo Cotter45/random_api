@@ -10,22 +10,46 @@ const cache = new nodeCache(3600);
 const router = express.Router();
 
 
-router.get('/oops', asyncHandler( async (req, res, next) => {
+// route to get a random park
+router.get('/random_park', asyncHandler( async (req, res, next) => {
+
+  const random_number = Math.floor(Math.random() * (59) + 1);
+
+  try {
+    let park;
+
+    if (cache.has(`park_${random_number}`)) {
+      park = cache.get(`park_${random_number}`);
+    } else {
+      park = await Park.findByPk(+random_number, {
+        include: [
+          { model: State },
+          { model: ParkPicture }
+        ]
+      });
+
+      cache.set(`park_${random_number}`, park);
+    }
+
+    return res.json(park);
+  } catch(e) {
+    next(e);
+  }
+
+}))
+
+// route to get a random picture
+router.get('/random_picture', asyncHandler( async (req, res, next) => {
 
   const pictures = await ParkPicture.findAll();
 
-  const mapped = pictures.map(picture => {
-    return {
-      park_id: picture.park_id,
-      location: picture.location,
-      createdAt: picture.createdAt,
-      updatedAt: picture.updatedAt
-    }
-  })
+  const random_number = Math.floor(Math.random() * (pictures.length - 1) + 1);
 
-  console.log(mapped);
-  return res.json(mapped)
-}))
+  const randomPicture = pictures[random_number];
+
+  return res.json(randomPicture.location);
+}));
+
 // route to get individual park
 router.get('/:id', asyncHandler(async (req, res, next) => {
   const { id } = req.params;

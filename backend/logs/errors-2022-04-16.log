@@ -1,0 +1,7 @@
+{"timeStamp": "2022-04-16T11:52:25.123Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - / - GET - ::1"},
+{"timeStamp": "2022-04-16T11:52:32.060Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - / - GET - ::1"},
+{"timeStamp": "2022-04-16T11:53:21.902Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - / - GET - ::1"},
+{"timeStamp": "2022-04-16T11:54:54.276Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - / - GET - ::1"},
+{"timeStamp": "2022-04-16T12:06:56.769Z" , "level": "error", "message": "500 - cache.has is not a function - /api/parks/random_park - GET - ::1"},
+{"timeStamp": "2022-04-16T12:07:05.666Z" , "level": "error", "message": "500 - cache.has is not a function - /api/parks/random_park - GET - ::1"},
+{"timeStamp": "2022-04-16T12:18:34.710Z" , "level": "error", "message": "500 - Cannot read property 'location' of undefined - /api/parks/random_picture - GET - ::1"},

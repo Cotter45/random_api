@@ -6,6 +6,8 @@ function Parks() {
   
   const [park, setPark] = useState<any>();
   const [loaded, setLoaded] = useState(false);
+  const [randomImage, setRandomImage] = useState('');
+  const [randomPark, setRandomPark] = useState<any>();
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -32,21 +34,70 @@ function Parks() {
     setShowModal(!showModal);
   }
 
+  const getRandomImage = async () => {
+    const url = process.env.NODE_ENV === 'production' ? window.location.origin : 'http://localhost:5000';
+    const response = await fetch(url + '/api/parks/random_picture');
+    const data = await response.json();
+    return setRandomImage(data);
+  }
+
+  const getRandomPark = async () => {
+    const url = process.env.NODE_ENV === 'production' ? window.location.origin : 'http://localhost:5000';
+    const response = await fetch(url + '/api/parks/random_park');
+    const data = await response.json();
+    return setRandomPark(data);
+  }
+
   return (
     <main className="main_container">
-      <header className="section">
+      <header id="top" className="section">
         <h2>Hello, US National Parks!</h2>
         <section>
           <p>
             Welcome to the US national parks API. There are 59 US national
             parks, and in this API you can find pretty good information on all
-            of them. There are currently only two routes and I'm not sure that
+            of them. There are currently only a few routes and I'm not sure that
             I'll ever add more but you're welcome to suggest some if you've got
             any ideas.
           </p>
         </section>
+        <h3>Table of Contents</h3>
+        <ul className="list">
+          <li>
+            <a className="scroll" href="#park">
+              GET /api/parks/:id
+            </a>
+          </li>
+          <li>
+            <a className="scroll" href="#parks">
+              GET /api/parks
+            </a>
+          </li>
+          <li>
+            <a className="scroll" href="#random_picture">
+              GET /api/parks/random_picture
+            </a>
+          </li>
+          <li>
+            <a className="scroll" href="#random_park">
+              GET /api/parks/random_park
+            </a>
+          </li>
+          <li>
+            <a className="scroll" href="#photos">
+              GET /static/resized/:photo_#.png
+            </a>
+          </li>
+        </ul>
       </header>
-      <section className="section">
+      <section id="park" className="section">
+        <ul className="list top">
+          <li>
+            <a className="scroll" href="#top">
+              Top
+            </a>
+          </li>
+        </ul>
         <h2>
           Route - <code>GET /api/parks/:id</code>
         </h2>
@@ -65,7 +116,14 @@ function Parks() {
           <pre>{JSON.stringify(park, null, 2)}</pre>
         </article>
       </section>
-      <section className="section">
+      <section id="parks" className="section">
+        <ul className="list top">
+          <li>
+            <a className="scroll" href="#top">
+              Top
+            </a>
+          </li>
+        </ul>
         <h2>
           Route - <code>GET /api/parks</code>
         </h2>
@@ -75,7 +133,95 @@ function Parks() {
           anyone really needs to see all of that JSON.
         </p>
       </section>
-      <section className="section">
+      <section id="random_picture" className="section">
+        <ul className="list top">
+          <li>
+            <a className="scroll" href="#top">
+              Top
+            </a>
+          </li>
+        </ul>
+        <h2>
+          Random - <code>GET /api/parks/random_picture</code>
+        </h2>
+        <p>
+          This route will serve the relative location of a random picture, so
+          just plug it right into a source tag with the origin to display a
+          random image!
+        </p>
+        <code>
+          {process.env.NODE_ENV === "production"
+            ? window.location.origin + "/api/parks/random_picture"
+            : "http://localhost:5000/api/parks/random_picture"}
+        </code>
+        <section className="list_column">
+          <button
+            onClick={() => getRandomImage()}
+            type="button"
+            className="link"
+          >
+            Get Random
+          </button>
+          {randomImage && (
+            <img
+              className="image fade_in"
+              src={
+                process.env.NODE_ENV === "production"
+                  ? window.location.origin + randomImage
+                  : "http://localhost:5000" + randomImage
+              }
+              alt="Zion example"
+            />
+          )}
+        </section>
+      </section>
+      <section id="random_park" className="section">
+        <ul className="list top">
+          <li>
+            <a className="scroll" href="#top">
+              Top
+            </a>
+          </li>
+        </ul>
+        <h2>
+          Random - <code>GET /api/parks/random_park</code>
+        </h2>
+        <p>
+          This route will serve up a randomly picked park from one of the 59
+          parks. It will return it in the same format as the{" "}
+          <code>/api/parks/:id</code> but I'll add the preview here just in case
+          you like clicking buttons like I do.
+        </p>
+        <code>
+          {process.env.NODE_ENV === "production"
+            ? window.location.origin + "/api/parks/random_picture"
+            : "http://localhost:5000/api/parks/random_park"}
+        </code>
+        <section className="list_column">
+          <button
+            onClick={() => getRandomPark()}
+            type="button"
+            className="link"
+          >
+            Get Random
+          </button>
+          {randomPark && (
+            <article className="list_column fade_in">
+              <h3>Example Return</h3>
+              <h5>{randomPark.title}</h5>
+              <pre>{JSON.stringify(randomPark, null, 2)}</pre>
+            </article>
+          )}
+        </section>
+      </section>
+      <section id="photos" className="section">
+        <ul className="list top">
+          <li>
+            <a className="scroll" href="#top">
+              Top
+            </a>
+          </li>
+        </ul>
         <h2>
           Photos - <code>GET /static/resized/:photo_#.png</code>
         </h2>

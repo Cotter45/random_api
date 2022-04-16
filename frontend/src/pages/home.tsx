@@ -28,7 +28,7 @@ function Home() {
       <section className="section">
         <h2>API Contents</h2>
         <section className="list_item">
-          <label>1. Parks API</label>
+          <h3>1.</h3>
           <button
             onClick={() => navigate("/parks")}
             type="button"
@@ -58,11 +58,7 @@ function Home() {
           <p>
             Not so bad when it's small, or less than 500px, but if you click on
             the image and view it in the modal you'll see what I mean. There are
-            currently 2 routes available: <code>/parks</code> which returns all
-            the parks, their states and the relative links for their 5 images
-            and <code>/parks/:id</code> where id is the integer of the park
-            which returns that park, their states and the relative links for
-            their 5 images.
+            currently 4 routes available and a bunch of pictures - 5 pictures for each park.
           </p>
         </article>
       </section>

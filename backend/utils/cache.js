@@ -6,6 +6,10 @@ class Cache {
     this.cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false });
   }
 
+  has(key) {
+    return this.cache.has(key);
+  }
+
   get(key) {
     return this.cache.get(key);
   }
