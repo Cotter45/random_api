@@ -1,6 +1,8 @@
 # random_api
 Not much of a README because the website itself is the documentation.
 
+- https://randoms-api.herokuapp.com/
+
 ## Tech
 - ExpressJS
 - React 
