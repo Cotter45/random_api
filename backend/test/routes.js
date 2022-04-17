@@ -84,6 +84,8 @@ describe("Cocktails API Routes", function() {
       expect(res).to.have.status(200);
       expect(res.body).to.be.an('array');
       expect(res.body[0]).to.have.property('name');
+      expect(res.body[0]).to.have.property('CocktailPictures');
+      expect(res.body[0]['CocktailPictures'][0]).to.have.property('location');
     })
     
     it ("should return all stock ingredients", async () => {
@@ -109,6 +111,9 @@ describe("Cocktails API Routes", function() {
     expect(res.body[0]).to.have.property('Cocktails')
     expect(res.body[0]['Cocktails']).to.be.an('array');
     expect(res.body[0]['Cocktails'][0]).to.have.property('name');
+    expect(res.body[0]['Cocktails'][0]).to.have.property('CocktailPictures')
+    expect(res.body[0]['Cocktails'][0]['CocktailPictures']).to.be.an('array');
+    expect(res.body[0]['Cocktails'][0]['CocktailPictures'][0]).to.have.property('location');
   })
 
 });

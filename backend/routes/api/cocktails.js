@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const nodeCache = require('../../utils/cache');
 
-const { Cocktail, Cocktail_Ingredient, Ingredient } = require("../../db/models");
+const { Cocktail, CocktailPicture, Cocktail_Ingredient, Ingredient } = require("../../db/models");
 
 const cache = new nodeCache(3600);
 
@@ -26,9 +26,10 @@ router.get('/', asyncHandler( async(req, res, next) => {
         { 
           model: Cocktail_Ingredient,
           include: [
-            { model: Ingredient }
+            { model: Ingredient },
           ],
         },
+        { model: CocktailPicture }
       ]
     });
 
@@ -87,7 +88,8 @@ router.get("/by_ingredient", asyncHandler( async(req, res, next) => {
           model: Cocktail,
           through: { attributes: [] },
           include: [
-            { model: Cocktail_Ingredient }
+            { model: Cocktail_Ingredient },
+            { model: CocktailPicture }
           ],
         }
       ]
