@@ -7,3 +7,49 @@
 {"timeStamp": "2022-04-17T11:57:10.258Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
 {"timeStamp": "2022-04-17T11:57:21.405Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
 {"timeStamp": "2022-04-17T11:58:08.351Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:05:47.446Z" , "level": "error", "message": "uncaughtException: bind EADDRINUSE null:5000
+Error: bind EADDRINUSE null:5000
+    at listenOnMasterHandle (net.js:1387:18)
+    at rr (internal/cluster/child.js:138:12)
+    at Worker.<anonymous> (internal/cluster/child.js:105:7)
+    at process.onInternalMessage (internal/cluster/utils.js:48:5)
+    at process.emit (events.js:412:35)
+    at emit (internal/child_process.js:910:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)"},
+{"timeStamp": "2022-04-17T12:05:47.446Z" , "level": "error", "message": "uncaughtException: bind EADDRINUSE null:5000
+Error: bind EADDRINUSE null:5000
+    at listenOnMasterHandle (net.js:1387:18)
+    at rr (internal/cluster/child.js:138:12)
+    at Worker.<anonymous> (internal/cluster/child.js:105:7)
+    at process.onInternalMessage (internal/cluster/utils.js:48:5)
+    at process.emit (events.js:412:35)
+    at emit (internal/child_process.js:910:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)"},
+{"timeStamp": "2022-04-17T12:05:47.446Z" , "level": "error", "message": "uncaughtException: bind EADDRINUSE null:5000
+Error: bind EADDRINUSE null:5000
+    at listenOnMasterHandle (net.js:1387:18)
+    at rr (internal/cluster/child.js:138:12)
+    at Worker.<anonymous> (internal/cluster/child.js:105:7)
+    at process.onInternalMessage (internal/cluster/utils.js:48:5)
+    at process.emit (events.js:412:35)
+    at emit (internal/child_process.js:910:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)"},
+{"timeStamp": "2022-04-17T12:05:53.048Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:05:53.137Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:06:42.609Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:06:42.687Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:06:55.974Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:06:56.050Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:08:14.166Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:08:14.243Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:08:14.271Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /api/cocktails/ingredient - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:08:23.449Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:08:23.531Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:10:01.766Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:10:01.849Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:10:56.689Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:10:56.764Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:11:37.297Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:11:37.366Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:12:07.100Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
+{"timeStamp": "2022-04-17T12:12:07.172Z" , "level": "error", "message": "404 - The requested resource couldn't be found. - /fail - GET - ::ffff:127.0.0.1"},
