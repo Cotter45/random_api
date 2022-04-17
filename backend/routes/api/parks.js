@@ -2,7 +2,6 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const nodeCache = require('../../utils/cache');
 
-const { requireAuth } = require("../../utils/auth");
 const { Park, State, ParkPicture } = require("../../db/models");
 
 const cache = new nodeCache(3600);
@@ -27,6 +26,8 @@ router.get('/random_park', asyncHandler( async (req, res, next) => {
           { model: ParkPicture }
         ]
       });
+
+      park = JSON.parse(JSON.stringify(park));
 
       cache.set(`park_${random_number}`, park);
     }
@@ -65,6 +66,8 @@ router.get('/:id', asyncHandler(async (req, res, next) => {
         ]
       });
 
+      park = JSON.parse(JSON.stringify(park));
+
       cache.set(`park_${id}`, park);
     }
 
@@ -87,6 +90,9 @@ router.get('/', asyncHandler(async (req, res, next) => {
           {model: ParkPicture}
         ]
       })
+
+      parks = JSON.parse(JSON.stringify(parks));
+
       cache.set('parks', parks);
     }
   
