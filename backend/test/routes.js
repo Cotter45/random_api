@@ -2,7 +2,6 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 
 const expect = chai.expect;
-const should = chai.should;
 
 chai.use(chaiHttp);
 
@@ -75,6 +74,19 @@ describe("Cocktails API Routes", function() {
     expect(res).to.have.status(404);
   })
 
+  it ("should return a random cocktail, its ingredients and picture", async () => {
+    const res = await chai 
+      .request(baseUrl)
+      .get('/api/cocktails/random_cocktail')
+      .set('Content-Type', 'application/json')
+
+      expect(res).to.have.status(200);
+      expect(res.body).to.be.an('object');
+      expect(res.body).to.have.property('name');
+      expect(res.body).to.have.property('CocktailPictures');
+      expect(res.body['CocktailPictures'][0]).to.have.property('location');
+  });
+
   it ("should return all cocktails and their ingredients", async () => {
     const res = await chai 
       .request(baseUrl)
@@ -97,7 +109,7 @@ describe("Cocktails API Routes", function() {
       expect(res).to.have.status(200);
       expect(res.body).to.be.an('array');
       expect(res.body[0]).to.have.property('name');
-  })
+    })
   
   it ("should return all ingredients with drinks you can make from them", async () => {
     const res = await chai

@@ -8,6 +8,38 @@ const cache = new nodeCache(3600);
 
 const router = express.Router();
 
+// route to get random cocktail and its ingredients
+router.get('/random_cocktail', asyncHandler( async(req, res, next) => {
+
+  const random_number = Math.floor(Math.random() * (59) + 1);
+
+  let cocktail;
+
+  if (cache.has(`cocktail_${random_number}`)) {
+    cocktail = cache.get(`cocktail_${random_number}`);
+
+    return res.json(cocktail);
+  }
+
+  try {
+
+    cocktail = await Cocktail.findByPk(random_number, {
+      include: [
+        { model: Cocktail_Ingredient, include: [ { model: Ingredient } ] },
+        { model: CocktailPicture}
+      ]
+    });
+
+    cocktail = JSON.parse(JSON.stringify(cocktail));
+
+    cache.set(`cocktail_${random_number}`, cocktail);
+
+    return res.json(cocktail);
+  } catch(e) {
+    next(e);
+  }
+}))
+
 // route to get all cocktails and their ingredients
 router.get('/', asyncHandler( async(req, res, next) => {
   
