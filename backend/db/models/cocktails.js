@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
       Cocktail.belongsToMany(models.Ingredient, mapper);
       Cocktail.hasMany(models.Cocktail_Ingredient, { foreignKey: 'cocktail_id' });
+      Cocktail.hasMany(models.CocktailPicture, { foreignKey: 'cocktail_id' });
     }
   }
   Cocktail.init({
