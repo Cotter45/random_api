@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   Cocktail.init({
     name: DataTypes.STRING,
     glass: DataTypes.STRING,
-    category: DataTypes.NUMBER,
+    category: DataTypes.STRING,
     garnish: DataTypes.STRING,
     preparation: DataTypes.STRING
   }, {

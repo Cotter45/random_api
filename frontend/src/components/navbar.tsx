@@ -27,6 +27,7 @@ function NavBar() {
         >Random API Docs</h2>
         <button 
           type='button' 
+          aria-label='Menu Button'
           className={isOpen ? 'hamburger active' : 'hamburger'}
           onClick={(e) => setIsOpen(!isOpen)}
         >
@@ -39,6 +40,7 @@ function NavBar() {
         <section className='nav_bar_menu fade_in'>
           <button 
             type='button' 
+            name='Parks'
             className='link fade_in'
             onClick={() => {
               navigate('/parks');
@@ -46,6 +48,17 @@ function NavBar() {
             }}
           >
             Parks API
+          </button>
+          <button 
+            type='button' 
+            name='Cocktails'
+            className='link fade_in'
+            onClick={() => {
+              navigate('/cocktails');
+              setIsOpen(false);
+            }}
+          >
+            Cocktails API
           </button>
         </section>
       )}

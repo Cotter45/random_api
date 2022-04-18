@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Modal } from "../components/modal";
 
 
@@ -9,8 +9,9 @@ function Parks() {
   const [randomImage, setRandomImage] = useState('');
   const [randomPark, setRandomPark] = useState<any>();
   const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState('');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (loaded) return;
 
     (async () => {
@@ -49,10 +50,10 @@ function Parks() {
   }
 
   return (
-    <main className="main_container">
+    <main className="main_container fade_in">
       <header id="top" className="section">
         <h2>Hello, US National Parks!</h2>
-        <section>
+        <article>
           <p>
             Welcome to the US national parks API. There are 59 US national
             parks, and in this API you can find pretty good information on all
@@ -60,7 +61,7 @@ function Parks() {
             I'll ever add more but you're welcome to suggest some if you've got
             any ideas.
           </p>
-        </section>
+        </article>
         <h3>Table of Contents</h3>
         <ul className="list">
           <li>
@@ -91,39 +92,38 @@ function Parks() {
         </ul>
       </header>
       <section id="park" className="section">
-        <ul className="list top">
-          <li>
-            <a className="scroll" href="#top">
-              Top
-            </a>
-          </li>
-        </ul>
+        <aside className="top">
+          <a className="scroll" href="#top">
+            Top
+          </a>
+        </aside>
         <h2>
           Route - <code>GET /api/parks/:id</code>
         </h2>
-        <article className="list_column">
+        <figure className="list_column">
           <h3>Example React Code</h3>
           <img
-            onClick={() => setShowModal(!showModal)}
+            onClick={() => {
+              setModalImage("/fetch.png");
+              setShowModal(!showModal);
+            }}
             style={{ cursor: "pointer" }}
             className="image"
             src={"/fetch.png"}
             alt="Example Fetch"
           />
-        </article>
+        </figure>
         <article className="list_column">
           <h3>Example Return</h3>
           <pre>{JSON.stringify(park, null, 2)}</pre>
         </article>
       </section>
       <section id="parks" className="section">
-        <ul className="list top">
-          <li>
-            <a className="scroll" href="#top">
-              Top
-            </a>
-          </li>
-        </ul>
+        <aside className="top">
+          <a className="scroll" href="#top">
+            Top
+          </a>
+        </aside>
         <h2>
           Route - <code>GET /api/parks</code>
         </h2>
@@ -134,13 +134,11 @@ function Parks() {
         </p>
       </section>
       <section id="random_picture" className="section">
-        <ul className="list top">
-          <li>
-            <a className="scroll" href="#top">
-              Top
-            </a>
-          </li>
-        </ul>
+        <aside className="top">
+          <a className="scroll" href="#top">
+            Top
+          </a>
+        </aside>
         <h2>
           Random - <code>GET /api/parks/random_picture</code>
         </h2>
@@ -158,6 +156,7 @@ function Parks() {
           <button
             onClick={() => getRandomImage()}
             type="button"
+            name="Get Random Park Image"
             className="link"
           >
             Get Random
@@ -165,6 +164,15 @@ function Parks() {
           {randomImage && (
             <img
               className="image fade_in"
+              style={{ cursor: "pointer" }}
+              onClick={(e) => {
+                setModalImage(
+                  process.env.NODE_ENV === "production"
+                    ? window.location.origin + randomImage
+                    : "http://localhost:5000" + randomImage
+                );
+                setShowModal(!showModal);
+              }}
               src={
                 process.env.NODE_ENV === "production"
                   ? window.location.origin + randomImage
@@ -176,13 +184,11 @@ function Parks() {
         </section>
       </section>
       <section id="random_park" className="section">
-        <ul className="list top">
-          <li>
-            <a className="scroll" href="#top">
-              Top
-            </a>
-          </li>
-        </ul>
+        <aside className="top">
+          <a className="scroll" href="#top">
+            Top
+          </a>
+        </aside>
         <h2>
           Random - <code>GET /api/parks/random_park</code>
         </h2>
@@ -194,13 +200,14 @@ function Parks() {
         </p>
         <code>
           {process.env.NODE_ENV === "production"
-            ? window.location.origin + "/api/parks/random_picture"
+            ? window.location.origin + "/api/parks/random_park"
             : "http://localhost:5000/api/parks/random_park"}
         </code>
         <section className="list_column">
           <button
             onClick={() => getRandomPark()}
             type="button"
+            name="Get Random Park Info"
             className="link"
           >
             Get Random
@@ -215,13 +222,11 @@ function Parks() {
         </section>
       </section>
       <section id="photos" className="section">
-        <ul className="list top">
-          <li>
-            <a className="scroll" href="#top">
-              Top
-            </a>
-          </li>
-        </ul>
+        <aside className="top">
+          <a className="scroll" href="#top">
+            Top
+          </a>
+        </aside>
         <h2>
           Photos - <code>GET /static/resized/:photo_#.png</code>
         </h2>
@@ -230,15 +235,33 @@ function Parks() {
           use the domain + <code>/static/resized/acadia_1.png</code>, for
           example:
         </p>
-        <code>http://localhost:5000/static/resized/zion_4.png</code>
-        <img
-          src={
+        <code>
+          {
             process.env.NODE_ENV === "production"
               ? window.location.origin + "/static/resized/zion_4.png"
               : "http://localhost:5000/static/resized/zion_4.png"
           }
-          alt="Zion example"
-        />
+        </code>
+        <figure className='list_column'>
+          <img
+            style={{ cursor: "pointer" }}
+            className="image"
+            onClick={(e) => {
+              setModalImage(
+                process.env.NODE_ENV === "production"
+                  ? window.location.origin + "/static/resized/zion_4.png"
+                  : "http://localhost:5000/static/resized/zion_4.png"
+              );
+              setShowModal(!showModal);
+            }}
+            src={
+              process.env.NODE_ENV === "production"
+                ? window.location.origin + "/static/resized/zion_4.png"
+                : "http://localhost:5000/static/resized/zion_4.png"
+            }
+            alt="Zion example"
+          />
+        </figure>
       </section>
       {showModal && (
         <Modal onClose={closeModal}>
@@ -246,7 +269,7 @@ function Parks() {
             onClick={() => setShowModal(!showModal)}
             style={{ cursor: "pointer" }}
             className="modal_image"
-            src={"/fetch.png"}
+            src={modalImage}
             alt="Example Fetch"
           />
         </Modal>

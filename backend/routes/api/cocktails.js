@@ -8,10 +8,59 @@ const cache = new nodeCache(3600);
 
 const router = express.Router();
 
+// route to get specific cocktail and its ingredients
+router.get('/cocktail/:id', asyncHandler( async(req, res, next) => {
+  const { id } = req.params;
+console.log(id, "ID HERE")
+  let cocktail;
+
+  if (cache.has(`cocktail_${+id}`)) {
+    cocktail = cache.get(`cocktail_${+id}`);
+
+    return res.json(cocktail);
+  }
+
+  try {
+
+    cocktail = await Cocktail.findByPk(+id, {
+      include: [
+        { model: Cocktail_Ingredient, include: [ { model: Ingredient } ] },
+        { model: CocktailPicture}
+      ]
+    });
+
+    cocktail = JSON.parse(JSON.stringify(cocktail));
+
+    cache.set(`cocktail_${+id}`, cocktail);
+
+    return res.json(cocktail);
+  } catch(e) {
+    next(e);
+  }
+}))
+
+// route to get a random picture
+router.get('/random_picture', asyncHandler( async (req, res, next) => {
+
+  const pictures = await CocktailPicture.findAll();
+
+  const random_number = Math.floor(Math.random() * (pictures.length) + 1);
+  let randomPicture = pictures[random_number];
+  
+  if (!randomPicture) {
+    while(!randomPicture) {
+      const random_number = Math.floor(Math.random() * (pictures.length) + 1);
+      randomPicture = pictures[random_number];
+    }
+  }
+  
+  return res.json(randomPicture.location);
+}));
+
 // route to get random cocktail and its ingredients
 router.get('/random_cocktail', asyncHandler( async(req, res, next) => {
 
-  const random_number = Math.floor(Math.random() * (59) + 1);
+  const random_number = Math.floor(Math.random() * 77 + 1);
 
   let cocktail;
 
@@ -102,7 +151,7 @@ router.get("/ingredients", asyncHandler( async(req, res, next) => {
 }));
 
 // route to get ingredients and drinks that can be made with them
-router.get("/by_ingredient", asyncHandler( async(req, res, next) => {
+router.get("/by_ingredients", asyncHandler( async(req, res, next) => {
 
   let ingredientsAndDrinks;
 

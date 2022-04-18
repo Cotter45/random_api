@@ -46,6 +46,18 @@ pre {
   white-space: pre-wrap;
 }
 
+p {
+  text-indent: 10px;
+}
+
+figure {
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: .8rem;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -120,11 +132,11 @@ pre {
   right: 0;
   top: 75px;
   color: black;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   border-radius: 0 0 0 5px;
 }
 
@@ -133,7 +145,7 @@ pre {
 }
 
 @keyframes fade {
-  0%{ opacity: 0; transform: scale(0); }
+  0%{ opacity: 0; transform: scale(.99); }
   100% { opacity: 1; transform: scale(1); }
 }
 
@@ -228,21 +240,39 @@ pre {
 .image {
   object-fit: cover;
   max-width: 500px;
-  height: 200px;
+  height: 300px;
   width: 90%;
   border-radius: 10px;
 }
 
 .modal_image {
   object-fit: contain;
-  width: 80vw;
+  max-width: 80vw;
   height: 80vh;
   border-radius: 10px;
 }
 
 .list {
-  list-style: none;
+  list-style: lower-roman;
+  list-style-position: inside;
   text-align: left;
+  padding-left: 5px;
+}
+
+.list > * {
+  padding-bottom: 10px;
+}
+
+.header {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.header > .link {
+  align-self: center;
 }
 
 .scroll {
@@ -251,6 +281,7 @@ pre {
   text-decoration: none;
   color: var(--dark-accent);
   position: relative;
+  font-size: 2rem;
 }
 
 .scroll::after {
@@ -274,4 +305,15 @@ pre {
 .top {
   align-self: flex-end;
   margin: 0;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .header {
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 90vw; */
+  }
 }

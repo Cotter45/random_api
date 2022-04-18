@@ -74,6 +74,29 @@ describe("Cocktails API Routes", function() {
     expect(res).to.have.status(404);
   })
 
+  it ("should return a random image", async () => {
+    const res = await chai 
+      .request(baseUrl)
+      .get('/api/cocktails/random_picture')
+      .set('Content-Type', 'application/json')
+
+      expect(res).to.have.status(200);
+      expect(res.body).to.be.an('string');
+  })
+
+  it ("should return a specific cocktail, its ingredients and picture", async () => {
+    const res = await chai 
+      .request(baseUrl)
+      .get('/api/cocktails/cocktail/2')
+      .set('Content-Type', 'application/json')
+  
+      expect(res).to.have.status(200);
+      expect(res.body).to.be.an('object');
+      expect(res.body).to.have.property('name');
+      expect(res.body).to.have.property('CocktailPictures');
+      expect(res.body['CocktailPictures'][0]).to.have.property('location');
+  })
+
   it ("should return a random cocktail, its ingredients and picture", async () => {
     const res = await chai 
       .request(baseUrl)
@@ -114,7 +137,7 @@ describe("Cocktails API Routes", function() {
   it ("should return all ingredients with drinks you can make from them", async () => {
     const res = await chai
       .request(baseUrl)
-      .get('/api/cocktails/by_ingredient')
+      .get('/api/cocktails/by_ingredients')
       .set('Content-Type', 'application/json')
     
     expect(res).to.have.status(200);
