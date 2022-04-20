@@ -19,6 +19,11 @@
             "date": 1650168021795,
             "name": "/Users/seancotter/Desktop/api_projects/api_project/backend/logs/errors-2022-04-17.log",
             "hash": "74c7d8e3f6a6e13d8cceca8c1391150a"
+        },
+        {
+            "date": 1650453564158,
+            "name": "/Users/seancotter/Desktop/api_projects/api_project/backend/logs/errors-2022-04-20.log",
+            "hash": "9ab13ec47848321737aa455ff727d435"
         }
     ],
     "hashType": "md5"

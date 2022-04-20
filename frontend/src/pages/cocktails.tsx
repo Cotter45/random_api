@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../components/modal';
 
 import { Cocktail, CocktailPicture, Ingredient } from '../types/cocktail_types';
@@ -15,7 +15,7 @@ function Cocktails() {
   const [ingredients, setIngredients] = useState<Ingredient[]>();
   const [byIngredients, setByIngredients] = useState<Ingredient[]>();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (loaded) return;
 
     (async () => {

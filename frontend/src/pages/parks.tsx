@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../components/modal";
 
 
@@ -11,7 +11,7 @@ function Parks() {
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState('');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (loaded) return;
 
     (async () => {

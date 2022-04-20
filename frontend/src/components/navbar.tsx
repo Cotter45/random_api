@@ -47,7 +47,7 @@ function NavBar() {
               setIsOpen(false);
             }}
           >
-            Parks API
+            Parks
           </button>
           <button 
             type='button' 
@@ -58,7 +58,7 @@ function NavBar() {
               setIsOpen(false);
             }}
           >
-            Cocktails API
+            Cocktails
           </button>
         </section>
       )}

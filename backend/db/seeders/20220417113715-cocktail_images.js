@@ -38,7 +38,7 @@ module.exports = {
     { cocktail_id: 28, location: '/static/resized/bellini.png'},
     { cocktail_id: 29, location: '/static/resized/grasshopper.png'},
     { cocktail_id: 30, location: '/static/resized/tequila_sunrise.png'},
-    { cocktail_id: 31, location: '/static/resized/daiquiri.png'},
+    { cocktail_id: 31, location: '/static/resized/daquiri.png'},
     { cocktail_id: 32, location: '/static/resized/rusty_nail.png'},
     { cocktail_id: 33, location: '/static/resized/b52.png'},
     { cocktail_id: 34, location: '/static/resized/stinger.png'},
