@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/seancotter/Desktop/api_projects/api_project/backend/logs/.91ad65c6f92f4521a203ba142177d58f4545bb56-audit.json",
+    "files": [
+        {
+            "date": 1652659466197,
+            "name": "/Users/seancotter/Desktop/api_projects/api_project/backend/logs/info-2022-05-15.log",
+            "hash": "4478d33daf00fcc8b3b29bc3908a7556"
+        }
+    ],
+    "hashType": "md5"
+}
