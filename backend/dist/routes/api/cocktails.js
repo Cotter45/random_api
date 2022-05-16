@@ -13,10 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const express_1 = __importDefault(require("express"));
 const asyncHandler = require("express-async-handler");
-const nodeCache = require('../../utils/cache');
 const redis_1 = __importDefault(require("../../utils/redis"));
 const { Cocktail, CocktailPicture, Cocktail_Ingredient, Ingredient } = require("../../db/models");
-const cache = new nodeCache(3600);
 const router = express_1.default.Router();
 // route to get specific cocktail and its ingredients
 router.get('/cocktail/:id', asyncHandler((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {

@@ -1,11 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 const asyncHandler = require("express-async-handler");
-const nodeCache = require('../../utils/cache');
 import redisClient from '../../utils/redis';
 
 const { Cocktail, CocktailPicture, Cocktail_Ingredient, Ingredient } = require("../../db/models");
 
-const cache = new nodeCache(3600);
 
 const router = express.Router();
 
